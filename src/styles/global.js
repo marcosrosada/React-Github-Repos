@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
@@ -13,8 +13,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #353940;
-    color: #FFF;
+    background: #F5F5F5;
+    color: #333;
     font-family: 'Source Sans Pro', sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;

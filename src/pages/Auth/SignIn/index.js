@@ -1,7 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
-// import { Container } from './styles';
+import Button from '../../../styles/components/Button';
+import { Container, SignForm } from './styles';
 
-const SignIn = () => <h1>SignIn</h1>;
+export default class SignIn extends Component {
+  state = {
+    email: '',
+    password: '',
+  };
 
-export default SignIn;
+  handleInputChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  render() {
+    const { email, password } = this.state;
+    return (
+      <Container>
+        <SignForm onSubmit={this.handleSubmit}>
+          <h1>Boas Vindas</h1>
+
+          <span>E-Mail</span>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.handleInputChange}
+          />
+
+          <span>Senha</span>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleInputChange}
+          />
+
+          <Button size="big" type="submit">
+            Entrar
+          </Button>
+        </SignForm>
+      </Container>
+    );
+  }
+}
