@@ -12,6 +12,8 @@ export default class Repositories extends Component {
 
     return (
       <Container>
+        <h1>Search GitHub Repos</h1>
+        <p>Search for GitHub repos using the following form</p>
         <Form>
           <input
             type="search"
