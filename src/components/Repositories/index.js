@@ -25,10 +25,10 @@ export default class Repositories extends Component {
         </Form>
 
         <ul>
-          <li>Repositories</li>
-          <li>Repositories</li>
-          <li>Repositories</li>
-          <li>Repositories</li>
+          <li>Repositories List</li>
+          <li>Repositories List</li>
+          <li>Repositories List</li>
+          <li>Repositories List</li>
         </ul>
       </Container>
     );
