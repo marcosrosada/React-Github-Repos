@@ -1,7 +1,12 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import Header from '../../components/Header';
+import { Container } from './styles';
 
-const Main = () => <h1>Main</h1>;
+const Main = () => (
+  <Container>
+    <Header />
+  </Container>
+);
 
 export default Main;
