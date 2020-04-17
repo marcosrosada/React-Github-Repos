@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { Container } from './styles';
+import Button from '../../styles/components/Button';
+import { Container, Form } from './styles';
 
-const Repositories = () => (
-  <Container>
-    <span>Lista de repositórios</span>
-  </Container>
-);
+export default class Repositories extends Component {
+  state = {
+    search: '',
+  };
+  render() {
+    const { search } = this.state;
 
-export default Repositories;
+    return (
+      <Container>
+        <Form>
+          <input
+            type="search"
+            name="search"
+            value={search}
+            placeholder="Github users"
+          />
+
+          <Button type="submit">Search</Button>
+          <Button color="gray">Clear</Button>
+        </Form>
+      </Container>
+    );
+  }
+}

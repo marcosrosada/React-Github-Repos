@@ -1,19 +1,4 @@
-import styled, { css } from "styled-components";
-
-const sizes = {
-  small: css`
-    height: 28px;
-    font-size: 12px;
-  `,
-  default: css`
-    height: 36px;
-    font-size: 14px;
-  `,
-  big: css`
-    height: 44px;
-    font-size: 18px;
-  `
-};
+import styled, { css } from 'styled-components';
 
 const colors = {
   default: css`
@@ -37,12 +22,14 @@ const colors = {
     &:hover {
       background: #999;
     }
-  `
+  `,
 };
 
 const Button = styled.button.attrs({
   // type: "button"
 })`
+  height: 28px;
+  font-size: 12px;
   border-radius: 3px;
   transition: background-color 0.15s ease;
   background: #7289da;
@@ -53,10 +40,9 @@ const Button = styled.button.attrs({
   text-transform: uppercase;
   font-weight: 700;
 
-  ${props => sizes[props.size || "default"]};
-  ${props => colors[props.color || "default"]};
+  ${(props) => colors[props.color || 'default']};
 
-  ${props =>
+  ${(props) =>
     props.filled === false &&
     css`
       background: none;

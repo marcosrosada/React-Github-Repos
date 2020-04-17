@@ -1,9 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
-
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
   * {
     padding: 0;
@@ -31,4 +28,19 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  input {
+    height: 28px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+    color: #f6f6f6;
+    margin-top: 8px;
+    transition: border 0.15s ease;
+    font-size: 16px;
+
+    &:hover {
+      border-color: #7289da;
+    }
 `;
