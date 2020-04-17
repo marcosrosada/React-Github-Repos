@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   h1 {
     color: #ccc;
+    margin: 0;
     font-size: 22px;
     font-weight: 500;
     text-align: center;
@@ -21,6 +22,7 @@ export const Container = styled.div`
 
   ul {
     list-style-type: none;
+    margin: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
