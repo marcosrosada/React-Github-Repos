@@ -1,31 +1,46 @@
 import React, { Component } from 'react';
+// import PropTypes from "prop-types";
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import ReposActions from '../../store/ducks/repositories';
 
 import Button from '../../styles/components/Button';
 import { Container, Form } from './styles';
 
-export default class Repositories extends Component {
+class Repositories extends Component {
   state = {
-    search: '',
+    user: '',
   };
 
-  handleInputSearchChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { user } = this.state;
+    const { getReposRequest } = this.props;
+
+    if (user) {
+      getReposRequest(user);
+    }
   };
 
-  
+  handleInputSearchChange = (e) => {
+    this.setState({ user: e.target.value });
+  };
+
   render() {
-    const { search } = this.state;
+    const { user } = this.state;
 
     return (
       <Container>
         <h1>Search GitHub Repos</h1>
         <p>Search for GitHub repos using the following form</p>
 
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="search"
-            value={search}
+            value={user}
             placeholder="Github users"
             onChange={this.handleInputSearchChange}
           />
@@ -145,3 +160,12 @@ export default class Repositories extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+  repos: state.repos,
+});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(ReposActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Repositories);

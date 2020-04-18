@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  getReposRequest: ['repos'],
+  getReposRequest: ['user'],
   getReposSuccess: ['data'],
   openReposModal: null,
   closeReposModal: null,
