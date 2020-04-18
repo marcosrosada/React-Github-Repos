@@ -21,6 +21,13 @@ export default createGlobalStyle`
     height: 100%;
   }
 
+  h1 {
+    color: #ccc;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+  }
+
   input, button {
     font-family: 'Source Sans Pro', sans-serif;
   }

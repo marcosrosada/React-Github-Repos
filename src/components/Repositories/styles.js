@@ -5,22 +5,16 @@ export const Container = styled.div`
   border-radius: 5px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
   padding: 20px;
-  margin: 20px auto 0;
+  margin: 100px 0;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
 
-  h1 {
-    color: #ccc;
-    font-size: 24px;
-    font-weight: 500;
-    text-align: center;
-  }
+  
 
   p {
     margin: 10px 0;
     color: #b9bbbe;
-    text-align: center;
   }
 `;
 

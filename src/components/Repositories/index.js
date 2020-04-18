@@ -16,7 +16,7 @@ export default class Repositories extends Component {
         <p>Search for GitHub repos using the following form</p>
         <Form>
           <input
-            type="search"
+            type="text"
             name="search"
             value={search}
             placeholder="Github users"
@@ -26,34 +26,34 @@ export default class Repositories extends Component {
           <Button color="gray">Clear</Button>
         </Form>
 
-        <div class="album py-5 bg-light">
-          <div class="container">
-            <div id="repos-list" class="row">
-              <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
+        <div className="album py-5">
+          <div className="container">
+            <div id="repos-list" className="row">
+              <div className="col-md-4 mb-4">
+                <div className="card shadow-sm h-100">
                   <img
                     src="https://picsum.photos/300/225"
                     alt="repo owner avatar"
                     width="100%"
                     height="225"
                   />
-                  <div class="card-body">
-                    <p class="card-text">
+                  <div className="card-body">
+                    <p className="card-text">
                       This is a wider card with supporting text below as a
                       natural lead-in to additional content. This content is a
                       little bit longer.
                     </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="btn-group">
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          className="btn btn-sm btn-outline-secondary"
                         >
                           View
                         </button>
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          className="btn btn-sm btn-outline-secondary"
                         >
                           Star
                         </button>
@@ -63,31 +63,31 @@ export default class Repositories extends Component {
                 </div>
               </div>
 
-              <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
+              <div className="col-md-4 mb-4">
+                <div className="card shadow-sm h-100">
                   <img
                     src="https://picsum.photos/300/225"
                     alt="repo owner avatar"
                     width="100%"
                     height="225"
                   />
-                  <div class="card-body">
-                    <p class="card-text">
+                  <div className="card-body">
+                    <p className="card-text">
                       This is a wider card with supporting text below as a
                       natural lead-in to additional content. This content is a
                       little bit longer.
                     </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="btn-group">
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          className="btn btn-sm btn-outline-secondary"
                         >
                           View
                         </button>
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          className="btn btn-sm btn-outline-secondary"
                         >
                           Star
                         </button>
@@ -97,31 +97,31 @@ export default class Repositories extends Component {
                 </div>
               </div>
 
-              <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
+              <div className="col-md-4 mb-4">
+                <div className="card shadow-sm h-100">
                   <img
                     src="https://picsum.photos/300/225"
                     alt="repo owner avatar"
                     width="100%"
                     height="225"
                   />
-                  <div class="card-body">
-                    <p class="card-text">
+                  <div className="card-body">
+                    <p className="card-text">
                       This is a wider card with supporting text below as a
                       natural lead-in to additional content. This content is a
                       little bit longer.
                     </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="btn-group">
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          className="btn btn-sm btn-outline-secondary"
                         >
                           View
                         </button>
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-secondary"
+                          className="btn btn-sm btn-outline-secondary"
                         >
                           Star
                         </button>

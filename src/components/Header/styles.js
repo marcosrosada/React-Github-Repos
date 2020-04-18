@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
   height: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
   padding: 20px;
   background: #202225;
   color: #b9bbbe;
@@ -12,13 +16,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  h1 {
-    color: #ccc;
-    margin: 0;
-    font-size: 22px;
-    font-weight: 500;
-    text-align: center;
-  }
+  
 
   ul {
     list-style-type: none;
@@ -31,7 +29,7 @@ export const Container = styled.div`
 
   a {
     text-decoration: none;
-    color: #fff;
+    color: #b9bbbe;
     padding-left: 10px;
     font-size: 15px;
   }
