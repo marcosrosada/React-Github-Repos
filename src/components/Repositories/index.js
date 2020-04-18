@@ -7,6 +7,12 @@ export default class Repositories extends Component {
   state = {
     search: '',
   };
+
+  handleInputSearchChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  
   render() {
     const { search } = this.state;
 
@@ -14,12 +20,14 @@ export default class Repositories extends Component {
       <Container>
         <h1>Search GitHub Repos</h1>
         <p>Search for GitHub repos using the following form</p>
+
         <Form>
           <input
             type="text"
             name="search"
             value={search}
             placeholder="Github users"
+            onChange={this.handleInputSearchChange}
           />
 
           <Button type="submit">Search</Button>
