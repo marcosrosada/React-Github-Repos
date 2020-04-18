@@ -6,7 +6,7 @@ import ReposActions from '../ducks/repositories';
 export function* getReposRequest({ user }) {
   const response = yield call(
     api.get,
-    `search/repositories?q=${user}&page=1&per_page=2`
+    `search/repositories?q=${user}&page=1&per_page=6`
   );
 
   yield put(ReposActions.getReposSuccess(response.data));
