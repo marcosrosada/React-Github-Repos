@@ -23,6 +23,7 @@ class Repositories extends Component {
 
   state = {
     user: '',
+    currentPage: 1,
   };
 
   handleSubmit = (e) => {
@@ -44,9 +45,25 @@ class Repositories extends Component {
     this.setState({ user: '' });
   };
 
+  renderPageNumber(index, currentPage) {
+    return (
+      <li
+        key={index}
+        className={`page-item ${currentPage === index ? 'active' : ''}`}
+      >
+        <button className="page-link">{index}</button>
+      </li>
+    );
+  }
+
   render() {
-    const { user } = this.state;
+    const { user, currentPage } = this.state;
     const { repositories } = this.props;
+    const pages = [];
+
+    for (let i = 1; i <= 10; i++) {
+      pages.push(i);
+    }
 
     return (
       <Container>
@@ -113,10 +130,41 @@ class Repositories extends Component {
             </div>
 
             {repositories.data.items.length === 0 && (
-              <div class="alert alert-danger" role="alert">
+              <div className="alert alert-danger" role="alert">
                 Ops! No results, try again!
               </div>
             )}
+
+            <div className="row">
+              <div className="col-md-3"></div>
+
+              <div className="col-md-4">
+                <ul className="pagination">
+                  <li
+                    className={`page-item ${
+                      currentPage === 1 ? 'disabled' : ''
+                    }`}
+                  >
+                    <button className="page-link">Previous</button>
+                  </li>
+
+                  {pages.map((index) =>
+                    this.renderPageNumber(index, currentPage)
+                  )}
+
+                  <li
+                    className={`page-item ${
+                      currentPage === repositories.data.total_count
+                        ? 'disabled'
+                        : ''
+                    }`}
+                  >
+                    <button className="page-link">Next</button>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-md-3"></div>
+            </div>
           </div>
         )}
       </Container>
