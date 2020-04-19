@@ -47,7 +47,6 @@ class Repositories extends Component {
   render() {
     const { user } = this.state;
     const { repositories } = this.props;
-    console.log(repositories);
 
     return (
       <Container>
@@ -84,11 +83,11 @@ class Repositories extends Component {
                         height="225"
                       />
                       <div className="card-body">
-                        <h5 class="card-title">{repository.name}</h5>
-                        <p className="card-text">
-                          This is a wider card with supporting text below as a
-                          natural lead-in to additional content. This content is
-                          a little bit longer.
+                        <h5 className="card-title" title={repository.name}>
+                          {repository.name}
+                        </h5>
+                        <p className="card-text" title={repository.description}>
+                          {repository.description}
                         </p>
                         <div className="d-flex justify-content-between align-items-center">
                           <div className="btn-group">
@@ -112,6 +111,12 @@ class Repositories extends Component {
                 ))}
               </div>
             </div>
+
+            {repositories.data.items.length === 0 && (
+              <div class="alert alert-danger" role="alert">
+                Ops! No results, try again!
+              </div>
+            )}
           </div>
         )}
       </Container>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* width: 75%; */
+  width: 75%;
   background: #36393f;
   border-radius: 5px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
@@ -12,8 +12,26 @@ export const Container = styled.div`
   align-items: center;
 
   p {
-    margin: 10px 0;
+    margin: 5px 0 10px;
     color: #b9bbbe;
+  }
+
+  .card-title {
+    color: #36393f;
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-text {
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 

@@ -1,6 +1,6 @@
 import { all, takeLatest } from 'redux-saga/effects';
 
-import { signIn, signOut, signUp } from './auth';
+import { signIn, signOut } from './auth';
 import { AuthTypes } from '../ducks/auth';
 
 import { getReposRequest } from './repositories';
