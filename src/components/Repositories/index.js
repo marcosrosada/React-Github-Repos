@@ -6,35 +6,20 @@ import { bindActionCreators } from 'redux';
 import ReposActions from '../../store/ducks/repositories';
 
 import Button from '../../styles/components/Button';
-import { Container, Form } from './styles';
+import { Container, Form, Pagination } from './styles';
 
 class Repositories extends Component {
-  static propTypes = {
-    getReposRequest: PropTypes.func.isRequired,
-    repositories: PropTypes.shape({
-      items: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number,
-          title: PropTypes.string,
-        })
-      ),
-    }),
-  };
-
   state = {
     user: '',
     currentPage: 1,
   };
 
   handleSubmit = (e) => {
+    const { currentPage } = this.state;
+
     e.preventDefault();
 
-    const { user } = this.state;
-    const { getReposRequest } = this.props;
-
-    if (user) {
-      getReposRequest(user);
-    }
+    this.loadRepositories(currentPage);
   };
 
   handleInputSearchChange = (e) => {
@@ -45,13 +30,44 @@ class Repositories extends Component {
     this.setState({ user: '' });
   };
 
+  loadRepositories(currentPage) {
+    const { user } = this.state;
+    const { getReposRequest } = this.props;
+    if (user) {
+      getReposRequest(user, currentPage);
+    }
+  }
+
+  prevPage = () => {
+    let { currentPage } = this.state;
+
+    if (currentPage === 1) return;
+
+    this.setState({ currentPage: (currentPage -= 1) });
+    this.loadRepositories(currentPage);
+  };
+
+  nextPage = () => {
+    let { currentPage } = this.state;
+    const { repositories } = this.props;
+
+    if (currentPage === repositories.data.total_count) return;
+    this.setState({ currentPage: (currentPage += 1) });
+    this.loadRepositories(currentPage);
+  };
+
   renderPageNumber(index, currentPage) {
     return (
       <li
         key={index}
         className={`page-item ${currentPage === index ? 'active' : ''}`}
       >
-        <button className="page-link">{index}</button>
+        <button
+          className="page-link"
+          onClick={() => this.loadRepositories(index)}
+        >
+          {index}
+        </button>
       </li>
     );
   }
@@ -135,36 +151,33 @@ class Repositories extends Component {
               </div>
             )}
 
-            <div className="row">
-              <div className="col-md-3"></div>
+            <Pagination>
+              <ul className="pagination">
+                <li
+                  className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}
+                >
+                  <button className="page-link" onClick={this.prevPage}>
+                    Previous
+                  </button>
+                </li>
 
-              <div className="col-md-4">
-                <ul className="pagination">
-                  <li
-                    className={`page-item ${
-                      currentPage === 1 ? 'disabled' : ''
-                    }`}
-                  >
-                    <button className="page-link">Previous</button>
-                  </li>
+                {pages.map((index) =>
+                  this.renderPageNumber(index, currentPage)
+                )}
 
-                  {pages.map((index) =>
-                    this.renderPageNumber(index, currentPage)
-                  )}
-
-                  <li
-                    className={`page-item ${
-                      currentPage === repositories.data.total_count
-                        ? 'disabled'
-                        : ''
-                    }`}
-                  >
-                    <button className="page-link">Next</button>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-md-3"></div>
-            </div>
+                <li
+                  className={`page-item ${
+                    currentPage === repositories.data.total_count
+                      ? 'disabled'
+                      : ''
+                  }`}
+                >
+                  <button className="page-link" onClick={this.nextPage}>
+                    Next
+                  </button>
+                </li>
+              </ul>
+            </Pagination>
           </div>
         )}
       </Container>

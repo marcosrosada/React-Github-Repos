@@ -4,11 +4,11 @@ import api from '../../services/api';
 
 import ReposActions from '../ducks/repositories';
 
-export function* getReposRequest({ user }) {
+export function* getReposRequest({ user, currentPage }) {
   try {
     const response = yield call(
       api.get,
-      `search/repositories?q=${user}&page=1&per_page=6`
+      `search/repositories?q=${user}&page=${currentPage}&per_page=6`
     );
 
     yield put(ReposActions.getReposSuccess(response.data));
