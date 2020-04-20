@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AuthActions from '../../../store/ducks/auth';
 
+import Loading from '../../../components/Loading';
 import Button from '../../../styles/components/Button';
 import { Container, SignForm } from './styles';
 
@@ -33,8 +34,11 @@ class SignIn extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { auth } = this.props;
     return (
       <Container>
+        {auth.loadingOpen && <Loading />}
+
         <SignForm onSubmit={this.handleSubmit}>
           <h1>Boas Vindas</h1>
 
@@ -63,7 +67,11 @@ class SignIn extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(AuthActions, dispatch);
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

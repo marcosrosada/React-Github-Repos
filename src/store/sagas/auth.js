@@ -1,4 +1,4 @@
-import { put } from 'redux-saga/effects';
+import { put, delay } from 'redux-saga/effects';
 import { actions as toastrActions } from 'react-redux-toastr';
 import { push } from 'connected-react-router';
 
@@ -7,6 +7,9 @@ import AuthActions from '../ducks/auth';
 export function* signIn({ email, password }) {
   try {
     // const response = yield call(api.post, "login", { email, password });
+    yield put(AuthActions.openLoading());
+    yield delay(2000);
+
     const response = {
       data:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmNvc2Zyb3NhZGFAZ21haWwuY29tIiwiaWF0IjoxNTgwMjA1NTcyLCJleHAiOjE1ODAyMDkxNzIsInN1YiI6IjIifQ.PEZo1cd2qkINwuMOMNiyWIBPblQgnJUOj8FV4GVLZ0c',
@@ -15,6 +18,8 @@ export function* signIn({ email, password }) {
     sessionStorage.setItem('@Celfocus:token', response.data);
     yield put(AuthActions.signInSuccess(response.data));
     yield put(push('/'));
+
+    yield put(AuthActions.closeLoading());
   } catch (error) {
     yield put(
       toastrActions.add({
