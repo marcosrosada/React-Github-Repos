@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -7,81 +6,39 @@ import ReposActions from '../../store/ducks/repositories';
 
 import Button from '../../styles/components/Button';
 import Loading from '../../components/Loading';
+import Pagination from '../../components/Pagination';
 import RepositoryItem from '../../components/RepositoryItem';
-import { Container, Form, Pagination } from './styles';
+import { Container, Form } from './styles';
 
 class Repositories extends Component {
   state = {
     user: '',
-    currentPage: 1,
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.loadRepositories();
+    const { user } = this.state;
+    const { getReposRequest } = this.props;
+
+    if (user) {
+      getReposRequest(user);
+    }
   };
 
   handleInputSearchChange = (e) => {
     this.setState({ user: e.target.value });
   };
 
-  loadRepositories = (currentPage) => {
-    const { user } = this.state;
-    const { getReposRequest } = this.props;
-
-    if (user) {
-      getReposRequest(user, currentPage);
-    }
-  };
   handleClear = () => {
     const { getReposSuccess } = this.props;
     this.setState({ user: '' });
     getReposSuccess({});
   };
 
-  prevPage = () => {
-    let { currentPage } = this.state;
-
-    if (currentPage === 1) return;
-
-    this.setState({ currentPage: (currentPage -= 1) });
-    this.loadRepositories(currentPage);
-  };
-
-  nextPage = () => {
-    let { currentPage } = this.state;
-    const { repositories } = this.props;
-
-    if (currentPage === repositories.data.total_count) return;
-    this.setState({ currentPage: (currentPage += 1) });
-    this.loadRepositories(currentPage);
-  };
-
-  renderPageNumber = (index, currentPage) => {
-    return (
-      <li
-        key={index}
-        className={`page-item ${currentPage === index ? 'active' : ''}`}
-      >
-        <button
-          className="page-link"
-          onClick={() => this.loadRepositories(index)}
-        >
-          {index}
-        </button>
-      </li>
-    );
-  };
-
   render() {
-    const { user, currentPage } = this.state;
+    const { user } = this.state;
     const { loading, repositories } = this.props;
-    const pages = [];
-
-    for (let i = 1; i <= 10; i++) {
-      pages.push(i);
-    }
 
     return (
       <Container>
@@ -109,31 +66,7 @@ class Repositories extends Component {
           <div>
             <RepositoryItem />
 
-            <Pagination>
-              <ul className="pagination">
-                <li
-                  className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}
-                >
-                  <button className="page-link" onClick={this.prevPage}>
-                    Previous
-                  </button>
-                </li>
-                {pages.map((index) =>
-                  this.renderPageNumber(index, currentPage)
-                )}
-                <li
-                  className={`page-item ${
-                    currentPage === repositories.data.total_count
-                      ? 'disabled'
-                      : ''
-                  }`}
-                >
-                  <button className="page-link" onClick={this.nextPage}>
-                    Next
-                  </button>
-                </li>
-              </ul>
-            </Pagination>
+            <Pagination user={user} />
           </div>
         )}
       </Container>
