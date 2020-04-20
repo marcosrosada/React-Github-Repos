@@ -34,10 +34,10 @@ class SignIn extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { auth } = this.props;
+    const { loading } = this.props;
     return (
       <Container>
-        {auth.loadingOpen && <Loading />}
+        {loading.loadingOpen && <Loading />}
 
         <SignForm onSubmit={this.handleSubmit}>
           <h1>Boas Vindas</h1>
@@ -68,7 +68,7 @@ class SignIn extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = (dispatch) =>

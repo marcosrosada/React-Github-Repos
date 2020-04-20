@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import ReposActions from '../../store/ducks/repositories';
 
 import Button from '../../styles/components/Button';
+import Loading from '../../components/Loading';
 import RepositoryItem from '../../components/RepositoryItem';
 import { Container, Form } from './styles';
 
@@ -35,10 +36,12 @@ class Repositories extends Component {
 
   render() {
     const { user } = this.state;
-    const { repositories } = this.props;
+    const { loading, repositories } = this.props;
 
     return (
       <Container>
+        {loading.loadingOpen && <Loading />}
+
         <h1>Search GitHub Repos</h1>
         <p>Search for GitHub repos using the following form</p>
 
@@ -64,6 +67,7 @@ class Repositories extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  loading: state.loading,
   repositories: state.repositories,
 });
 const mapDispatchToProps = (dispatch) =>

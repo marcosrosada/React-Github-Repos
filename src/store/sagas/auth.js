@@ -3,11 +3,12 @@ import { actions as toastrActions } from 'react-redux-toastr';
 import { push } from 'connected-react-router';
 
 import AuthActions from '../ducks/auth';
+import LoadingActions from '../ducks/loading';
 
 export function* signIn({ email, password }) {
   try {
     // const response = yield call(api.post, "login", { email, password });
-    yield put(AuthActions.openLoading());
+    yield put(LoadingActions.openLoading());
     yield delay(2000);
 
     const response = {
@@ -19,7 +20,7 @@ export function* signIn({ email, password }) {
     yield put(AuthActions.signInSuccess(response.data));
     yield put(push('/'));
 
-    yield put(AuthActions.closeLoading());
+    yield put(LoadingActions.closeLoading());
   } catch (error) {
     yield put(
       toastrActions.add({
