@@ -5,60 +5,21 @@ import ReposActions from '../../store/ducks/repositories';
 
 import Modal from '../../components/Modal';
 import Button from '../../styles/components/Button';
-import { Container, Pagination } from './styles';
+import { Container } from './styles';
 
 const RepositoryItem = ({ repositories, openModal, closeModal }) => {
-  // const [currentPage, setCurrentPage] = useState(1);
   const [repositoryView, setRepositoryView] = useState(null);
   const [viewModal, setViewModal] = useState('');
-  const pages = [];
-
-  for (let i = 1; i <= 10; i++) {
-    pages.push(i);
-  }
 
   const handlerView = (repository, view) => {
     setRepositoryView(repository);
     setViewModal(view);
     openModal();
   };
-  // const prevPage = () => {
-  //   let { currentPage } = this.state;
-
-  //   if (currentPage === 1) return;
-
-  //   // this.setState({ currentPage: (currentPage -= 1) });
-  //   // this.loadRepositories(currentPage);
-  // };
-
-  // const nextPage = () => {
-  //   let { currentPage } = this.state;
-  //   const { repositories } = this.props;
-
-  //   if (currentPage === repositories.data.total_count) return;
-  //   // this.setState({ currentPage: (currentPage += 1) });
-  //   // this.loadRepositories(currentPage);
-  // };
-
-  // const renderPageNumber = (index, currentPage) => {
-  //   return (
-  //     <li
-  //       key={index}
-  //       className={`page-item ${currentPage === index ? 'active' : ''}`}
-  //     >
-  //       <button
-  //         className="page-link"
-  //         onClick={() => this.loadRepositories(index)}
-  //       >
-  //         {index}
-  //       </button>
-  //     </li>
-  //   );
-  // };
 
   return (
     <Container>
-      <div className="album py-5">
+      <div className="album py-4">
         <div className="container">
           <div id="repos-list" className="row">
             {repositories.data.items.map((repository) => (
@@ -164,32 +125,6 @@ const RepositoryItem = ({ repositories, openModal, closeModal }) => {
             Ops! No results, try again!
           </div>
         )}
-
-        {
-          // <Pagination>
-          //   <ul className="pagination">
-          //     <li
-          //       className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}
-          //     >
-          //       <button className="page-link" onClick={this.prevPage}>
-          //         Previous
-          //       </button>
-          //     </li>
-          //     {pages.map((index) => this.renderPageNumber(index, currentPage))}
-          //     <li
-          //       className={`page-item ${
-          //         currentPage === repositories.data.total_count
-          //           ? 'disabled'
-          //           : ''
-          //       }`}
-          //     >
-          //       <button className="page-link" onClick={this.nextPage}>
-          //         Next
-          //       </button>
-          //     </li>
-          //   </ul>
-          // </Pagination>
-        }
       </div>
     </Container>
   );

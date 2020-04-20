@@ -19,9 +19,3 @@ export const Container = styled.div`
     text-overflow: ellipsis;
   }
 `;
-
-export const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
