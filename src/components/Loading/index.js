@@ -15,7 +15,7 @@ const Loading = () => (
       <div className="sk-cube sk-cube8"></div>
       <div className="sk-cube sk-cube9"></div>
 
-      <span>Loading...</span>
+      <span>Loading</span>
     </div>
   </Container>
 );

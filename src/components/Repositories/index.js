@@ -31,7 +31,9 @@ class Repositories extends Component {
   };
 
   handleClear = () => {
+    const { getReposSuccess } = this.props;
     this.setState({ user: '' });
+    getReposSuccess({});
   };
 
   render() {
