@@ -30,6 +30,13 @@ export default createGlobalStyle`
     margin: 0;
   }
 
+  a {
+    text-decoration: none;
+    color: #4980bc;
+    padding-left: 10px;
+    font-size: 15px;
+  }
+
   input, button {
     font-family: 'Source Sans Pro', sans-serif;
   }

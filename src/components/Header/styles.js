@@ -16,8 +16,6 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  
-
   ul {
     list-style-type: none;
     margin: 0;
@@ -25,12 +23,5 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-  }
-
-  a {
-    text-decoration: none;
-    color: #b9bbbe;
-    padding-left: 10px;
-    font-size: 15px;
   }
 `;

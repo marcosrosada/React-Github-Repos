@@ -4,7 +4,7 @@ import api from '../../services/api';
 
 import ReposActions from '../ducks/repositories';
 
-export function* getReposRequest({ user, currentPage }) {
+export function* getReposRequest({ user, currentPage = 1 }) {
   try {
     const response = yield call(
       api.get,

@@ -17,16 +17,16 @@ export default Creators;
 
 export const INITIAL_STATE = Immutable({
   data: [],
-  ReposModalOpen: false,
+  reposModalOpen: false,
 });
 
 /* Reducers */
 
 export const success = (state, { data }) => state.merge({ data });
 
-export const openModal = (state) => state.merge({ ReposModalOpen: true });
+export const openModal = (state) => state.merge({ reposModalOpen: true });
 
-export const closeModal = (state) => state.merge({ ReposModalOpen: false });
+export const closeModal = (state) => state.merge({ reposModalOpen: false });
 
 /* Reducers to types */
 
