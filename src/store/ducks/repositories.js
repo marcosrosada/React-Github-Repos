@@ -6,8 +6,8 @@ import Immutable from 'seamless-immutable';
 const { Types, Creators } = createActions({
   getReposRequest: ['user', 'currentPage'],
   getReposSuccess: ['data'],
-  openReposModal: null,
-  closeReposModal: null,
+  openModal: null,
+  closeModal: null,
 });
 
 export const ReposTypes = Types;
@@ -32,6 +32,6 @@ export const closeModal = (state) => state.merge({ reposModalOpen: false });
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_REPOS_SUCCESS]: success,
-  [Types.OPEN_REPOS_MODAL]: openModal,
-  [Types.CLOSE_REPOS_MODAL]: closeModal,
+  [Types.OPEN_MODAL]: openModal,
+  [Types.CLOSE_MODAL]: closeModal,
 });

@@ -7,18 +7,20 @@ import Modal from '../../components/Modal';
 import Button from '../../styles/components/Button';
 import { Container, Pagination } from './styles';
 
-const RepositoryItem = ({ repositories, openReposModal, closeReposModal }) => {
+const RepositoryItem = ({ repositories, openModal, closeModal }) => {
   // const [currentPage, setCurrentPage] = useState(1);
   const [repositoryView, setRepositoryView] = useState(null);
+  const [viewModal, setViewModal] = useState('');
   const pages = [];
 
   for (let i = 1; i <= 10; i++) {
     pages.push(i);
   }
 
-  const handlerView = (repository) => {
+  const handlerView = (repository, view) => {
     setRepositoryView(repository);
-    openReposModal();
+    setViewModal(view);
+    openModal();
   };
   // const prevPage = () => {
   //   let { currentPage } = this.state;
@@ -81,13 +83,14 @@ const RepositoryItem = ({ repositories, openReposModal, closeReposModal }) => {
                         <button
                           type="button"
                           className="btn btn-sm btn-outline-secondary"
-                          onClick={() => handlerView(repository)}
+                          onClick={() => handlerView(repository, 'view')}
                         >
                           View
                         </button>
                         <button
                           type="button"
                           className="btn btn-sm btn-outline-secondary"
+                          onClick={() => handlerView(repository, 'confirm')}
                         >
                           Star
                         </button>
@@ -100,7 +103,7 @@ const RepositoryItem = ({ repositories, openReposModal, closeReposModal }) => {
           </div>
         </div>
 
-        {repositories.reposModalOpen && (
+        {repositories.reposModalOpen && viewModal === 'view' && (
           <Modal>
             <h1>{repositoryView.owner.login}</h1>
 
@@ -121,17 +124,41 @@ const RepositoryItem = ({ repositories, openReposModal, closeReposModal }) => {
             >
               GO TO REPO
             </a>
-
-            <Button
-              type="button"
-              onClick={closeReposModal}
-              filled={false}
-              color="gray"
-            >
-              Cancelar
-            </Button>
+            <div className="footer-button">
+              <Button
+                type="button"
+                onClick={closeModal}
+                filled={false}
+                color="gray"
+              >
+                Cancelar
+              </Button>
+            </div>
           </Modal>
         )}
+
+        {repositories.reposModalOpen && viewModal === 'confirm' && (
+          <Modal>
+            <h1>Confirm</h1>
+
+            <p>Do you confirm staring repo?</p>
+
+            <div className="footer-button">
+              <Button
+                type="button"
+                onClick={closeModal}
+                filled={false}
+                color="gray"
+              >
+                Cancelar
+              </Button>
+              <Button type="button" onClick={closeModal}>
+                Confirm
+              </Button>
+            </div>
+          </Modal>
+        )}
+
         {repositories.data.items.length === 0 && (
           <div className="alert alert-danger" role="alert">
             Ops! No results, try again!
