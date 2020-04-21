@@ -11,13 +11,25 @@ const Pagination = ({ repositories, getReposRequest, user }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(5);
   let pages = [];
-  // let limit = Math.ceil(repositories.data.total_count / 6);
 
   useEffect(() => {
     setLimit(Math.ceil(repositories.data.total_count / 6));
   }, [repositories.data.total_count]);
-  for (let i = 1; i <= limit; i++) {
-    pages.push(i);
+  // for (let i = 1; i <= limit; i++) {
+  //   pages.push(i);
+  // }
+  getPagingRange(currentPage, {
+    total: Math.ceil(repositories.data.total_count / 6),
+  });
+
+  function getPagingRange(current, { min = 1, total = 10, length = 10 } = {}) {
+    if (length > total) length = total;
+
+    let start = current - Math.floor(length / 2);
+    start = Math.max(start, min);
+    start = Math.min(start, min + total - length);
+
+    return Array.from({ length: length }, (el, i) => pages.push(start + i));
   }
 
   const prevPage = () => {
