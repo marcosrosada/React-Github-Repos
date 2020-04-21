@@ -9,13 +9,13 @@ import { Container } from './styles';
 
 const Pagination = ({ repositories, getReposRequest, user }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  // const [limit, setLimit] = useState(5);
   let pages = [];
+  let limit = repositories.data.total_count / 6;
 
   useEffect(() => {
     console.log('Repositories', repositories);
     console.log('User', user);
-    // limit = setLimit(repositories.total_count / 6);
   });
   for (let i = 1; i <= limit; i++) {
     pages.push(i);
