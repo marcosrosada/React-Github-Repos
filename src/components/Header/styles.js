@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  width: 100%;
   height: 60px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
   z-index: 1030;
   padding: 20px;
   background: #202225;

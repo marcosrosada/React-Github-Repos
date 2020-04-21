@@ -1,5 +1,7 @@
 Header Container:
 
 ```jsx
-<Header>Header</Header>
+import Header from '../../components/Header';
+
+<Header />;
 ```

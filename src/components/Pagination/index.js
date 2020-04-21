@@ -18,7 +18,7 @@ const Pagination = ({ repositories, getReposRequest, user }) => {
     total: Math.ceil(repositories.data.total_count / 6),
   });
 
-  function getPagingRange(current, { min = 1, total = 10, length = 10 } = {}) {
+  function getPagingRange(current, { min = 1, total = 10, length = 10 }) {
     if (length > total) length = total;
 
     let start = current - Math.floor(length / 2);

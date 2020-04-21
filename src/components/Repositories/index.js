@@ -63,11 +63,19 @@ class Repositories extends Component {
         </Form>
 
         {repositories.data.items && (
-          <div>
-            <RepositoryItem />
+          <>
+            {repositories.data.items.length > 0 ? (
+              <div>
+                <RepositoryItem />
 
-            <Pagination user={user} />
-          </div>
+                <Pagination user={user} />
+              </div>
+            ) : (
+              <div className="alert alert-danger" role="alert">
+                Ops! No results, try again!
+              </div>
+            )}
+          </>
         )}
       </Container>
     );

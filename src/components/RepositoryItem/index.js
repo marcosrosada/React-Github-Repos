@@ -119,12 +119,6 @@ const RepositoryItem = ({ repositories, openModal, closeModal }) => {
             </div>
           </Modal>
         )}
-
-        {repositories.data.items.length === 0 && (
-          <div className="alert alert-danger" role="alert">
-            Ops! No results, try again!
-          </div>
-        )}
       </div>
     </Container>
   );

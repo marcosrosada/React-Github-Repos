@@ -6,7 +6,7 @@ export const Container = styled.div`
   border-radius: 5px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
   padding: 20px;
-  margin: 100px 0;
+  margin: 60px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,6 +39,7 @@ export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 0 10px 0;
 
   input {
     margin: 0;

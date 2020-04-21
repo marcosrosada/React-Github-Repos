@@ -1,5 +1,5 @@
-Header Container:
+Loading Container:
 
 ```jsx
-<Header>Header</Header>
+// <Loading>Loading</Loading>
 ```

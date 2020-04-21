@@ -1,5 +1,5 @@
-Header Container:
+Modal Container:
 
 ```jsx
-<Header>Header</Header>
+// <Modal>Modal</Modal>
 ```

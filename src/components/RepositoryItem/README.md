@@ -1,5 +1,5 @@
-Header Container:
+RepositoryItem Container:
 
 ```jsx
-<Header>Header</Header>
+<RepositoryItem>RepositoryItem</RepositoryItem>
 ```

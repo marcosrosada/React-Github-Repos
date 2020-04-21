@@ -1,5 +1,5 @@
-Header Container:
+Pagination Container:
 
 ```jsx
-<Header>Header</Header>
+<Pagination>Pagination</Pagination>
 ```
