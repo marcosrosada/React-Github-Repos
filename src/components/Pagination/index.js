@@ -9,14 +9,13 @@ import { Container } from './styles';
 
 const Pagination = ({ repositories, getReposRequest, user }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  // const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(5);
   let pages = [];
-  let limit = repositories.data.total_count / 6;
+  // let limit = Math.ceil(repositories.data.total_count / 6);
 
   useEffect(() => {
-    console.log('Repositories', repositories);
-    console.log('User', user);
-  });
+    setLimit(Math.ceil(repositories.data.total_count / 6));
+  }, [repositories.data.total_count]);
   for (let i = 1; i <= limit; i++) {
     pages.push(i);
   }
@@ -71,11 +70,7 @@ const Pagination = ({ repositories, getReposRequest, user }) => {
           </button>
         </li>
         {pages.map((index) => renderPageNumber(index, currentPage))}
-        <li
-          className={`page-item ${
-            currentPage === repositories.data.total_count ? 'disabled' : ''
-          }`}
-        >
+        <li className={`page-item ${currentPage === limit ? 'disabled' : ''}`}>
           <button className="page-link" onClick={nextPage}>
             Next
           </button>
