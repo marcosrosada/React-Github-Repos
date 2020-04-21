@@ -8,34 +8,36 @@ import ReposActions from '../../store/ducks/repositories';
 import { Container } from './styles';
 
 const Pagination = ({ repositories, getReposRequest, user }) => {
-  let [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(5);
   let pages = [];
 
   useEffect(() => {
     console.log('Repositories', repositories);
     console.log('User', user);
+    // limit = setLimit(repositories.total_count / 6);
   });
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= limit; i++) {
     pages.push(i);
   }
 
   const prevPage = () => {
     if (currentPage === 1) return;
 
-    setCurrentPage((currentPage -= 1));
-    getReposRequest(user, currentPage);
+    setCurrentPage((currentPage) => currentPage - 1);
+    getReposRequest(user, currentPage - 1);
   };
 
   const numberPage = (page) => {
-    setCurrentPage((currentPage = page));
-    getReposRequest(user, currentPage);
+    setCurrentPage(page);
+    getReposRequest(user, page);
   };
 
   const nextPage = () => {
     if (currentPage === repositories.data.total_count) return;
 
-    setCurrentPage((currentPage += 1));
-    getReposRequest(user, currentPage);
+    setCurrentPage((currentPage) => currentPage + 1);
+    getReposRequest(user, currentPage + 1);
   };
 
   const renderPageNumber = (index, currentPage) => {
