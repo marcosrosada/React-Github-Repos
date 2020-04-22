@@ -1,4 +1,4 @@
-Header Container:
+Header:
 
 ```jsx
 import Header from '../../components/Header';

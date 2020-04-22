@@ -1,5 +1,7 @@
 Repositories Container:
 
 ```jsx
-<Repositories>Repositories</Repositories>
+import Repositories from '../../components/Repositories';
+
+<Repositories />;
 ```

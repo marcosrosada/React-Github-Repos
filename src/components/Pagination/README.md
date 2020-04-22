@@ -1,5 +1,7 @@
-Pagination Container:
+Pagination:
 
 ```jsx
-<Pagination>Pagination</Pagination>
+import Pagination from '../../components/Pagination';
+
+<Pagination />;
 ```

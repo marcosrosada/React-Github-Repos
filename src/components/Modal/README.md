@@ -1,5 +1,6 @@
 Modal Container:
 
 ```jsx
-// <Modal>Modal</Modal>
+import Modal from '../../components/Modal';
+// <Modal />
 ```

@@ -1,5 +1,7 @@
-Loading Container:
+Loading:
 
 ```jsx
-// <Loading>Loading</Loading>
+import Loading from '../../components/Loading';
+
+// <Loading />
 ```

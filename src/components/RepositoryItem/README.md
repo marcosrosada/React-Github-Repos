@@ -1,5 +1,7 @@
 RepositoryItem Container:
 
 ```jsx
-<RepositoryItem>RepositoryItem</RepositoryItem>
+import RepositoryItem from '../../components/RepositoryItem';
+
+<RepositoryItem />;
 ```
